@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dheepesh | Supply Chain & Operations Portfolio</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #070707;
+            --surface: #101010;
+            --card: #141414;
+            --accent: #f5c518;
+            --accent2: #ff5e3a;
+            --text: #f5f5f5;
+            --muted: #9a9a9a;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            z-index: 9999;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 6%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 3px;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 7rem 6%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 197, 24, 0.12), transparent 70%);
+            right: -150px;
+            top: 10%;
+            z-index: -1;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid rgba(245, 197, 24, 0.4);
+            color: var(--accent);
+            padding: 0.4rem 0.9rem;
+            font-size: 0.72rem;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 0.9;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-role {
+            margin-top: 1rem;
+            color: var(--muted);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .hero-desc {
+            margin-top: 1.5rem;
+            line-height: 1.9;
+            color: var(--muted);
+            max-width: 650px;
+            font-size: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 1.8rem;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(245, 197, 24, 0.08);
+            transform: translate(12px, 12px);
+            z-index: -1;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .metric {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+        }
+
+        .metric h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--accent);
+            font-size: 2.5rem;
+        }
+
+        .metric p {
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-title span {
+            color: var(--accent2);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .line {
+            height: 1px;
+            background: var(--border);
+            flex: 1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(245, 197, 24, 0.25);
+        }
+
+        .project-tag {
+            color: var(--accent2);
+            font-size: 0.7rem;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .project-metric {
+            margin-top: 1.5rem;
+            color: var(--accent);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.3rem;
+        }
+
+        .project-metric-label {
+            color: var(--muted);
+            font-size: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .tag-item {
+            border: 1px solid rgba(245, 197, 24, 0.2);
+            background: rgba(245, 197, 24, 0.05);
+            color: var(--accent);
+            padding: 0.35rem 0.7rem;
+            font-size: 0.7rem;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .skill-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-box ul {
+            list-style: none;
+        }
+
+        .skill-box li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--muted);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text {
+            line-height: 2;
+            color: var(--muted);
+        }
+
+        .about-text strong {
+            color: var(--accent);
+        }
+
+        .timeline {
+            border-left: 1px solid var(--border);
+            padding-left: 2rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            left: -2.4rem;
+            top: 0.3rem;
+            transform: rotate(45deg);
+        }
+
+        .timeline-year {
+            color: var(--accent2);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+        }
+
+        .timeline-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            margin-top: 0.4rem;
+        }
+
+        .timeline-sub {
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .contact {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-box h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+        }
+
+        .contact-box h2 span {
+            color: var(--accent);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        footer {
+            padding: 2rem 6%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        @media(max-width:900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 7rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+
+                position: fixed;
+
+                top: 0;
+                right: -100%;
+
+                width: 260px;
+                height: 100vh;
+
+                background: var(--surface);
+
+                flex-direction: column;
+
+                justify-content: center;
+                align-items: center;
+
+                gap: 2rem;
+
+                display: flex;
+
+                transition: 0.4s ease;
+
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            section {
+                padding: 5rem 7%;
+            }
+
+            .contact-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                gap: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero-desc {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .project-card,
+            .skill-box {
+                padding: 1.5rem;
+            }
+
+            .contact-box h2 {
+                font-size: 3rem;
+            }
+        }
+
+        .contact-heading {
+            padding-left: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="particles"></div>
+
+    <div id="loader">
+
+        <div class="loader-content">
+
+            <h1>DHEEPESH</h1>
+
+            <p>Supply Chain • Operations • Analytics</p>
+
+        </div>
+
+    </div>
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="overlay" id="overlay"></div>
+
+    <nav>
+        <div class="logo">DHEEPESH</div>
+
+        <ul class="nav-links">
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <button id="themeToggle" class="theme-btn">
+            ☀
+        </button>
+
+        <div class="hamburger" id="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <div class="tag">SUPPLY CHAIN · ANALYTICS · AUTOMATION</div>
+
+            <h1>DHEE<span>PESH</span></h1>
+
+            <p class="hero-role">
+                MBA - Logistics & Supply Chain Management
+            </p>
+
+            <p class="hero-desc">
+                I build data-driven supply chain systems that improve visibility,
+                coordination, and operational efficiency across logistics and
+                distribution workflows. My work combines analytics, automation,
+                and operational strategy to solve real business problems.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">VIEW PROJECTS</a>
+                <a href="Dheepesh_R_Logistics_Supply_Chain_Resume.pdf" class="btn-secondary">DOWNLOAD RESUME</a>
+                <a href="https://www.linkedin.com/in/dheepeshr/" class="btn-secondary">LINKEDIN</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+
+            <h3 style="font-family:'Bebas Neue';font-size:2rem;letter-spacing:2px;">
+                OPERATIONS IMPACT
+            </h3>
+
+            <div class="metric-grid">
+
+                <div class="metric">
+                    <h3 class="counter" data-target="191">0</h3>
+                    <p>KM optimized per day through route optimization logic for DP World transport workflow.</p>
+                </div>
+
+                <div class="metric">
+                    <h3 class="counter" data-target="172">0</h3>
+                    <p>Purchase orders monitored through OTIF automation workflow using n8n and Gmail alerts.</p>
+                </div>
+
+                <div class="metric">
+                    <h3 class="counter" data-target="377">0</h3>
+                    <p>Retailers analyzed for loyalty reward system research at Varun Beverages.</p>
+                </div>
+
+                <div class="metric">
+                    <h3 class="counter-money" data-target="59">0</h3>
+                    <p>Estimated monthly operational savings based on route efficiency calculations.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section id="projects">
+
+        <div class="section-title">
+            <span>01 /</span>
+            <h2>FEATURED PROJECTS</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+
+                <div class="project-tag">
+                    PYTHON · POWER BI · LOGISTICS OPTIMIZATION
+                </div>
+
+                <div class="project-title">
+                    DP WORLD ROUTE OPTIMIZER
+                </div>
+
+                <div class="project-desc">
+                    Developed a route optimization system for DP World’s Redhills CFS logistics operations using Python
+                    and Nearest Neighbor routing logic. The project optimized delivery sequencing, reduced operational
+                    distance, and improved transport efficiency across multiple Chennai delivery zones.
+                </div>
+
+                <div class="project-metric">
+                    191 KM SAVED
+                </div>
+
+                <div class="project-metric-label">
+                    Estimated operational savings based on optimized transport routing calculations.
+                </div>
+
+                <div class="tags">
+                    <div class="tag-item">Python</div>
+                    <div class="tag-item">Power BI</div>
+                    <div class="tag-item">Routing Logic</div>
+                    <div class="tag-item">SCM</div>
+                </div>
+
+            </div>
+
+            <div class="project-card">
+
+                <div class="project-tag">
+                    N8N · OTIF · AUTOMATION
+                </div>
+
+                <div class="project-title">
+                    OTIF VENDOR ALERT SYSTEM
+                </div>
+
+                <div class="project-desc">
+                    Built an automated OTIF monitoring workflow using n8n, JavaScript, Google Sheets, and Gmail
+                    integration. The workflow identifies failed deliveries, calculates OTIF performance, and triggers
+                    automated vendor alerts.
+                </div>
+
+                <div class="project-metric">
+                    9AM AUTOMATION
+                </div>
+
+                <div class="project-metric-label">
+                    Daily automated workflow for vendor performance visibility and exception monitoring.
+                </div>
+
+                <div class="tags">
+                    <div class="tag-item">n8n</div>
+                    <div class="tag-item">Automation</div>
+                    <div class="tag-item">JavaScript</div>
+                    <div class="tag-item">OTIF</div>
+                </div>
+
+            </div>
+
+            <div class="project-card">
+
+                <div class="project-tag">
+                    FMCG · ANALYTICS · RETAIL STRATEGY
+                </div>
+
+                <div class="project-title">
+                    PEPSI RETAIL LOYALTY SYSTEM
+                </div>
+
+                <div class="project-desc">
+                    Conducted a large-scale retailer engagement study at Varun Beverages involving 377 retailers.
+                    Designed a structured loyalty reward framework to improve retailer engagement, shelf visibility, and
+                    market penetration.
+                </div>
+
+                <div class="project-metric">
+                    377 RETAILERS
+                </div>
+
+                <div class="project-metric-label">
+                    Research-based loyalty strategy supported by statistical analysis and retailer behavior insights.
+                </div>
+
+                <div class="tags">
+                    <div class="tag-item">SPSS</div>
+                    <div class="tag-item">ANOVA</div>
+                    <div class="tag-item">Chi-Square</div>
+                    <div class="tag-item">Retail Analytics</div>
+                </div>
+
+            </div>
+
+            <div class="project-card">
+
+                <div class="project-tag">
+                    INVENTORY · POWER BI · ABC XYZ
+                </div>
+
+                <div class="project-title">
+                    INVENTORY CLASSIFICATION SYSTEM
+                </div>
+
+                <div class="project-desc">
+                    Designed an ABC-XYZ inventory classification framework for demand-driven inventory management. Built
+                    dashboards and replenishment logic using Power BI and Excel-based inventory analytics.
+                </div>
+
+                <div class="project-metric">
+                    20 SKU ANALYSIS
+                </div>
+
+                <div class="project-metric-label">
+                    Safety stock and reorder point logic for inventory visibility and replenishment planning.
+                </div>
+
+                <div class="tags">
+                    <div class="tag-item">Inventory</div>
+                    <div class="tag-item">Power BI</div>
+                    <div class="tag-item">ABC XYZ</div>
+                    <div class="tag-item">Analytics</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="skills" style="background: var(--surface);">
+
+        <div class="section-title">
+            <span>02 /</span>
+            <h2>SKILLS & CAPABILITIES</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-box">
+
+                <h3>SUPPLY CHAIN</h3>
+
+                <ul>
+                    <li>Inventory Planning</li>
+                    <li>Route Optimization</li>
+                    <li>Warehouse Operations</li>
+                    <li>Vendor Coordination</li>
+                    <li>OTIF Monitoring</li>
+                    <li>Distribution Operations</li>
+                </ul>
+
+            </div>
+
+            <div class="skill-box">
+
+                <h3>ANALYTICS & TECH</h3>
+
+                <ul>
+                    <li>Python</li>
+                    <li>Power BI</li>
+                    <li>Advanced Excel</li>
+                    <li>SPSS Analytics</li>
+                    <li>n8n Automation</li>
+                    <li>Google Sheets Automation</li>
+                </ul>
+
+            </div>
+
+            <div class="skill-box">
+
+                <h3>BUSINESS & OPERATIONS</h3>
+
+                <ul>
+                    <li>Process Improvement</li>
+                    <li>Operational Analysis</li>
+                    <li>Retail Engagement Strategy</li>
+                    <li>Data Visualization</li>
+                    <li>Performance Reporting</li>
+                    <li>Business Problem Solving</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="about">
+
+        <div class="section-title">
+            <span>03 /</span>
+            <h2>ABOUT ME</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    I’m an <strong>MBA graduate in Logistics & Supply Chain Management</strong> with a technology-driven
+                    approach to operations and business systems.
+                </p>
+
+                <br>
+
+                <p>
+                    My background combines supply chain management, analytics, automation, and operational
+                    problem-solving. I enjoy building systems that improve visibility, efficiency, and coordination
+                    across logistics workflows.
+                </p>
+
+                <br>
+
+                <p>
+                    My work includes route optimization, OTIF monitoring automation, inventory analytics, and retailer
+                    engagement systems. I’m particularly interested in logistics technology, distribution systems, and
+                    scalable operational frameworks.
+                </p>
+
+                <br>
+
+                <p>
+                    I’m currently seeking opportunities in supply chain, operations, logistics, analytics, and
+                    distribution-focused roles across Chennai and Bangalore.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-title">MBA Graduate</div>
+                    <div class="timeline-sub">Logistics & Supply Chain Management</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-title">Varun Beverages Internship</div>
+                    <div class="timeline-sub">Operations & Distribution Analytics</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-title">B.Com IT Graduate</div>
+                    <div class="timeline-sub">Technology Foundation for SCM Systems</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="contact" id="contact">
+
+        <div class="contact-box">
+
+            <div class="contact-heading">
+                <h2>
+                    I DON'T JUST<br>
+                    <span>MANAGE SUPPLY CHAINS.</span><br>
+                    I ENGINEER THEM.
+                </h2>
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:dheepesh.work@gmail.com">dheepesh.work@gmail.com</a>
+                <a href="https://www.linkedin.com/in/dheepeshr/">LINKEDIN</a>
+                <a href="#">Chennai / Bangalore</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 Dheepesh</p>
+        <p>Supply Chain Professional · Analytics · Automation · Operations</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
