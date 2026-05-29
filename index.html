@@ -486,10 +486,12 @@
                 position: fixed;
 
                 top: 0;
-                right: -100%;
+                right: 0;
 
                 width: 220px;
                 height: 100vh;
+
+                transform: translateX(100%);
 
                 background: var(--surface);
 
@@ -508,7 +510,7 @@
             }
 
             .nav-links.active {
-                right: 0;
+                transform: translateX(0);
             }
 
             section {
@@ -565,7 +567,7 @@
             padding-left: 3rem;
         }
 
-         *{
+        * {
             outline: 1px solid red !important;
         }
     </style>
